@@ -5,9 +5,9 @@ if [ -z "$1" ]; then
 else
     CERNNAME=$1
 fi
-echo "[${0}] Using {CERNNAME} as username for Rucio"
+echo "[${0}] Using $CERNNAME as username for Rucio"
 
-PILEUP_DATASET="/Neutrino_E-10_gun/Run3Summer21PrePremix-Summer22_124X_mcRun3_2022_realistic_v11-v2/PREMIX"
+PILEUP_DATASET="/Neutrino_E-10_gun/Run3Summer21PrePremix-Summer23_130X_mcRun3_2023_realistic_v13-v1/PREMIX"
 
 if [ -f pileupinput.dat ]; then
     mv pileupinput.dat pileupinput.dat.$(date +"%Y-%m-%d-%H-%M-%S")
