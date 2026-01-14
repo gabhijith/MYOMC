@@ -5,7 +5,7 @@ if [ -z "$1" ]; then
 else
     CERNNAME=$1
 fi
-echo "[${0}] Using $CERNNAME as username for Rucio"
+echo "[${0}] Using ${CERNNAME} as username for Rucio"
 
 # NOTE: This script is for the Run3Summer24 campaign and intentionally uses the
 # RunIIISummer24 PrePremix premix library:
