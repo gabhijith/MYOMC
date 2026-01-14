@@ -68,7 +68,6 @@ fi
 cd CMSSW_14_0_18/src
 eval `scram runtime -sh`
 
-mv ../../Configuration .
 scram b
 cd ../..
 
@@ -170,7 +169,6 @@ fi
 cd CMSSW_15_0_2/src
 eval `scram runtime -sh`
 
-mv ../../Configuration .
 scram b
 cd ../..
 
