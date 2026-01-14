@@ -125,7 +125,7 @@ cmsDriver.py  \
     --fileout "file:Run3Summer24DRPremix0_$NAME_$JOBINDEX.root" \
     --number $NEVENTS \
     --number_out $NEVENTS \
-    --pileup_input "dbs:/Neutrino_E-10_gun/RunIIISummer24PrePremix-Premixlib2024_140X_mcRun3_2024_realistic_v26-v1/PREMIX" \
+    --pileup_input "$PILEUP_FILELIST" \
     --no_exec \
     --nThreads $(( $MAX_NTHREADS < 8 ? $MAX_NTHREADS : 8 )) \
     --mc 
