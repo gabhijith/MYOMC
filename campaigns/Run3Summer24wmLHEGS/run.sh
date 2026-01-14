@@ -209,16 +209,16 @@ cmsDriver.py  \
     --conditions 150X_mcRun3_2024_realistic_v2 \
     --datatier NANOAODSIM \
     --eventcontent NANOAODSIM1 \
-    --python_filename "Run3Summer24NanoAODv12_${NAME}_cfg.py" \
+    --python_filename "Run3Summer24NanoAODv15_${NAME}_cfg.py" \
     --filein "file:Run3Summer24MiniAOD_$NAME_$JOBINDEX.root" \
-    --fileout "file:Run3Summer24NanoAODv12_$NAME_$JOBINDEX.root" \
+    --fileout "file:Run3Summer24NanoAODv15_$NAME_$JOBINDEX.root" \
     --number $NEVENTS \
     --number_out $NEVENTS \
     --no_exec \
     --nThreads $(( $MAX_NTHREADS < 8 ? $MAX_NTHREADS : 8 )) \ \
     --mc 
-cmsRun "Run3Summer24NanoAODv12_${NAME}_cfg.py"
-if [ ! -f "Run3Summer24NanoAODv12_$NAME_$JOBINDEX.root" ]; then
-    echo "Run3Summer24NanoAODv12_$NAME_$JOBINDEX.root not found. Exiting."
+cmsRun "Run3Summer24NanoAODv15_${NAME}_cfg.py"
+if [ ! -f "Run3Summer24NanoAODv15_$NAME_$JOBINDEX.root" ]; then
+    echo "Run3Summer24NanoAODv15_$NAME_$JOBINDEX.root not found. Exiting."
     return 1
 fi
