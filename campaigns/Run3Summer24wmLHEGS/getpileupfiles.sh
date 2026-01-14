@@ -7,6 +7,11 @@ else
 fi
 echo "[${0}] Using $CERNNAME as username for Rucio"
 
+# NOTE: This script is for the Run3Summer24 campaign and intentionally uses the
+# RunIIISummer24 PrePremix premix library:
+#   Premixlib2024_140X_mcRun3_2024_realistic_v26-v1
+# This differs from the older/default Summer23_130X_mcRun3_2023_realistic_v13-v1
+# pileup dataset referenced in run.sh.
 PILEUP_DATASET="/Neutrino_E-10_gun/RunIIISummer24PrePremix-Premixlib2024_140X_mcRun3_2024_realistic_v26-v1/PREMIX"
 
 if [ -f pileupinput.dat ]; then
