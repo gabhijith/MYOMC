@@ -56,22 +56,20 @@ TOPDIR=$PWD
 # NANOGEN
 # Setup CMSSW and merge NANOGEN stuff
 #export SCRAM_ARCH=slc6_amd64_gcc700
-export SCRAM_ARCH=slc7_amd64_gcc820
-if [ -r CMSSW_10_6_32_patch1 ] ; then
-    echo release CMSSW_10_6_32_patch1 already exists
-    cd CMSSW_10_6_32_patch1/src
-    eval `scram runtime -sh`
-    scram b -j8
-    cd $TOPDIR
+export SCRAM_ARCH=el8_amd64_gcc12
+
+source /cvmfs/cms.cern.ch/cmsset_default.sh
+if [ -r CMSSW_14_0_19/src ] ; then
+  echo release CMSSW_14_0_19 already exists
 else
-    scram project -n "CMSSW_10_6_32_patch1" CMSSW_10_6_32_patch1
-    cd CMSSW_10_6_32_patch1/src
-    eval `scram runtime -sh`
-    #git cms-init
-    #git cms-merge-topic DryRun:CMSSW_10_6_22-NANOGEN
-    scram b -j8
-    cd $TOPDIR
+  scram p CMSSW CMSSW_14_0_19
 fi
+cd CMSSW_14_0_19/src
+eval `scram runtime -sh`
+
+mv ../../Configuration .
+scram b
+cd ../..
 
 # Setup fragment
 mkdir -pv $CMSSW_BASE/src/Configuration/GenProduction/python
@@ -89,15 +87,14 @@ cd $TOPDIR
 # cmsDriver and run
 cmsDriver.py Configuration/GenProduction/python/fragment.py \
     --python_filename "NANOGEN_${NAME}_cfg.py" \
-    --eventcontent NANOAODGEN \
+    --eventcontent NANOAOD \
     --customise Configuration/DataProcessing/Utils.addMonitoring \
-    --datatier NANOGEN \
+    --datatier NANOAOD \
     --fileout "file:NANOGEN_$NAME_$JOBINDEX.root" \
-    --conditions 106X_mc2017_realistic_v6 \
-    --beamspot Realistic25ns13TeVEarly2017Collision \
+    --conditions 140X_mcRun3_2024_realistic_v26 \
     --step LHE,GEN,NANOGEN \
     --geometry DB:Extended \
-    --era Run2_2017,run2_nanoAOD_106Xv2 \
+    --era Run3_2024 \
     --no_exec \
     --mc \
     --nThreads $MAX_NTHREADS \
